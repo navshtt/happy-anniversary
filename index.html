@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY ANNIVERSARY</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f8ff 0%, #ffe4e1 100%);
+            color: #333;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 90%;
+            width: 700px;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #e91e63; /* Pink/Rose color */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Access Page Styles */
+        #access-page h2 {
+            color: #4a148c; /* Deep Purple */
+        }
+
+        #anniversary-code {
+            padding: 10px;
+            margin: 15px 0;
+            width: 80%;
+            max-width: 300px;
+            border: 2px solid #ff4081;
+            border-radius: 8px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        button {
+            background-color: #ff4081; /* Accent Pink */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+
+        /* Main Menu Styles */
+        #main-menu {
+            display: none;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .menu-item {
+            background-color: #fce4ec; /* Light Pink */
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #880e4f; /* Dark Pink Text */
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-item:hover {
+            background-color: #f8bbd0; /* Slightly Darker Pink */
+            transform: translateY(-5px);
+        }
+
+        /* Content Page Styles */
+        .content-page {
+            display: none;
+            text-align: left;
+        }
+
+        .back-button {
+            display: block;
+            margin-bottom: 20px;
+            background-color: #4a148c;
+            width: 150px;
+            text-align: center;
+        }
+        
+        /* Media Specific Styles */
+        #music-page ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .music-link {
+            display: block;
+            background-color: #d1c4e9; /* Light Purple */
+            color: #311b92; /* Dark Purple Text */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .music-link:hover {
+            background-color: #b39ddb;
+        }
+
+        #music-player {
+            margin-top: 20px;
+            width: 100%;
+            min-height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: none;
+        }
+
+        #memories-page video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #best-pic-page img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Our Story / My Letter */
+        .story-text {
+            white-space: pre-wrap; /* Preserves line breaks and spaces */
+            line-height: 1.6;
+            text-align: left;
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="access-page" class="container">
+        <h1>HAPPY ANNIVERSARY</h1>
+        <h2>Enter the secret code, my love!</h2>
+        <input type="password" id="anniversary-code" placeholder="Your Code">
+        <button onclick="checkCode()">Enter</button>
+        <p id="error-message" style="color: red; margin-top: 10px; display: none; font-weight: bold;">Wrong code. Try again!</p>
+    </div>
+
+    <div id="main-menu" class="container">
+        <h1>Welcome to Our Anniversary Page!</h1>
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showPage('music-page')">🎶 MUSIC</div>
+            <div class="menu-item" onclick="showPage('memories-page')">🎥 MEMORIES</div>
+            <div class="menu-item" onclick="showPage('best-pic-page')">📸 BEST PIC</div>
+            <div class="menu-item" onclick="showPage('our-story-page')">📖 OUR STORY</div>
+            <div class="menu-item" onclick="showPage('my-letter-page')">💌 MY LETTER FOR YOU</div>
+        </div>
+    </div>
+
+    <div id="music-page" class="content-page container">
+        <button class="back-button" onclick="showPage('main-menu')">← Back to Menu</button>
+        <h2>Our Songs by **Addie**</h2>
+        <ul>
+            <li><a href="#" class="music-link" data-embed="YOUR_TAHANAN_EMBED_LINK" onclick="playMusic(event, this)">Tahanan</a></li>
+            <li><a href="#" class="music-link" data-embed="YOUR_PARALUMAN_EMBED_LINK" onclick="playMusic(event, this)">Paraluman</a></li>
+            <li><a href="#" class="music-link" data-embed="YOUR_MAHIKA_EMBED_LINK" onclick="playMusic(event, this)">Mahika</a></li>
+        </ul>
+        <iframe id="music-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p style="text-align: center; margin-top: 20px;">*(Click a song title to play it above)*</p>
+    </div>
+
+    <div id="memories-page" class="content-page container">
+        <button class="back-button" onclick="showPage('main-menu')">← Back to Menu</button>
+        <h2>Our Journey in a Video</h2>
+        <video controls autoplay muted>
+            <source src="d68a1dbc-1668-4749-b54c-5e17381f2ee9.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p style="color:red; font-size: 0.9em; margin-top: 15px;">
+            **IMPORTANT:** For this to work, the video file (d68a1dbc-1668-4749-b54c-5e17381f2ee9.mp4) 
+            **MUST** be uploaded to the same folder as this 'index.html' file on your hosting service.
+        </p>
+    </div>
+
+    <div id="best-pic-page" class="content-page container">
+        <button class="back-button" onclick="showPage('main-menu')">← Back to Menu</button>
+        <h2>The One I Cherish Most</h2>
+        <img src="091945af-6cfb-437b-991b-2f0bcaeb4702.jpg" alt="Our Best Picture">
+        <p style="color:red; font-size: 0.9em; margin-top: 15px;">
+            **IMPORTANT:** For this to work, the picture file (091945af-6cfb-437b-991b-2f0bcaeb4702.jpg) 
+            **MUST** be uploaded to the same folder as this 'index.html' file on your hosting service.
+        </p>
+    </div>
+
+    <div id="our-story-page" class="content-page container">
+        <button class="back-button" onclick="showPage('main-menu')">← Back to Menu</button>
+        <h2>Our Beautiful Story</h2>
+        <div class="story-text">
+            *Replace this with the story of how you met and fell in love!*
+            
+            Example: It all started with a simple hello on [Date/Place].
+            I remember our first date vividly—you were [describe clothing] and you looked
+            absolutely stunning. Every moment with you is an adventure, and I wouldn't trade
+            our story for the world. Happy Anniversary, mahal!
+        </div>
+    </div>
+
+    <div id="my-letter-page" class="content-page container">
+        <button class="back-button" onclick="showPage('main-menu')">← Back to Menu</button>
+        <h2>A Letter From My Heart</h2>
+        <div class="story-text">
+            *Replace this with your personal anniversary letter!*
+
+            My dearest [Name/Nickname],
+
+            I can't believe it's been one whole year. Time truly flies when I'm with you.
+            You've brought so much light, laughter, and love into my life, and I am eternally
+            grateful for the day our paths crossed.
+
+            Thank you for your patience, your kindness, and for always being my biggest fan.
+            Thank you for being you. Here's to many more years and milestones together!
+
+            I love you more than words can say.
+
+            Forever yours,
+            [Your Name]
+        </div>
+    </div>
+
+    <script>
+        const correctCode = "1yranniversary"; 
+        
+        const accessPage = document.getElementById('access-page');
+        const mainMenu = document.getElementById('main-menu');
+        const contentPages = document.querySelectorAll('.content-page');
+        const errorMessage = document.getElementById('error-message');
+
+        function checkCode() {
+            const inputElement = document.getElementById('anniversary-code');
+            const inputCode = inputElement.value.trim(); 
+            
+            if (inputCode === correctCode) {
+                accessPage.style.display = 'none';
+                mainMenu.style.display = 'block';
+                errorMessage.style.display = 'none';
+                inputElement.value = ''; 
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            accessPage.style.display = 'none';
+            mainMenu.style.display = 'none';
+            contentPages.forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show the requested page
+            const pageToShow = document.getElementById(pageId);
+            if (pageToShow) {
+                pageToShow.style.display = 'block';
+            }
+        }
+
+        function playMusic(event, linkElement) {
+            event.preventDefault(); 
+            
+            const embedUrl = linkElement.getAttribute('data-embed');
+            const player = document.getElementById('music-player');
+            
+            document.querySelectorAll('.music-link').forEach(link => link.style.backgroundColor = '#d1c4e9');
+            linkElement.style.backgroundColor = '#8bc34a'; 
+
+            if (embedUrl && !embedUrl.includes('YOUR_')) {
+                player.src = embedUrl;
+            } else {
+                player.src = '';
+                alert("Please replace the placeholder link for this song with the actual embed URL from YouTube or Spotify.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('access-page');
+        });
+    </script>
+
+</body>
+</html>
